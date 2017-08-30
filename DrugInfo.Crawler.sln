@@ -5,6 +5,10 @@ VisualStudioVersion = 12.0.40629.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DrugInfo.Crawler", "DrugInfo.Crawler\DrugInfo.Crawler.csproj", "{C800C770-FF56-40EE-A3E2-04BCBB6E886B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DrugInfoManufacturer.Crawler", "DrugInfoManufacturer.Crawler\DrugInfoManufacturer.Crawler.csproj", "{6BB4311F-AF93-43AE-B4C0-50483C9D7F6F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "Common\Common.csproj", "{A99C4852-4830-4BC1-A0D3-C2CD42720FCB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{C800C770-FF56-40EE-A3E2-04BCBB6E886B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C800C770-FF56-40EE-A3E2-04BCBB6E886B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C800C770-FF56-40EE-A3E2-04BCBB6E886B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6BB4311F-AF93-43AE-B4C0-50483C9D7F6F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6BB4311F-AF93-43AE-B4C0-50483C9D7F6F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6BB4311F-AF93-43AE-B4C0-50483C9D7F6F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6BB4311F-AF93-43AE-B4C0-50483C9D7F6F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A99C4852-4830-4BC1-A0D3-C2CD42720FCB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A99C4852-4830-4BC1-A0D3-C2CD42720FCB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A99C4852-4830-4BC1-A0D3-C2CD42720FCB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A99C4852-4830-4BC1-A0D3-C2CD42720FCB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
