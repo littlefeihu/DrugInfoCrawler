@@ -4,6 +4,7 @@ using OpenQA.Selenium.PhantomJS;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -15,16 +16,17 @@ namespace DrugInfoManufacturer.Crawler
     {
         static void Main(string[] args)
         {
+            Console.WriteLine(PingHelper.Ping("113.128.91.59", 48888));
 
             //查看第N页药品
             var driver1 = new PhantomJSDriver(GetPhantomJSDriverService());
-
-            Pager page = new Pager { Currentpage = 0 };
+            var frompage = int.Parse(System.Configuration.ConfigurationManager.AppSettings["fromPage"]);
+            Pager page = new Pager { Currentpage = frompage };
             do
             {
                 driver1.Navigate().GoToUrl(GetUrl(page.Currentpage + 1));
 
-                Thread.Sleep(2000);
+                Thread.Sleep(3000);
 
                 if (driver1.Title == "403 Forbidden")
                 {

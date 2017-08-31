@@ -1,4 +1,5 @@
-﻿using HtmlAgilityPack;
+﻿using Common;
+using HtmlAgilityPack;
 using OpenQA.Selenium;
 using OpenQA.Selenium.PhantomJS;
 using System;
@@ -15,16 +16,16 @@ namespace DrugInfo.Crawler
     {
         static void Main(string[] args)
         {
-
             //查看第N页药品
             var driver1 = new PhantomJSDriver(GetPhantomJSDriverService());
-
-            Pager page = new Pager { Currentpage = 0 };
+            var db = new Model1();
+            var frompage = int.Parse(System.Configuration.ConfigurationManager.AppSettings["fromPage"]);
+            Pager page = new Pager { Currentpage = frompage };
             do
             {
                 driver1.Navigate().GoToUrl(GetUrl(page.Currentpage + 1));
 
-                Thread.Sleep(2000);
+                Thread.Sleep(3000);
 
                 if (driver1.Title == "403 Forbidden")
                 {
@@ -35,13 +36,14 @@ namespace DrugInfo.Crawler
                 HtmlDocument doc = new HtmlDocument();
                 doc.LoadHtml(driver1.PageSource);
                 //共 18702条&nbsp;&nbsp;&nbsp;&nbsp;第 1页/共1247页
-                var pageNodeText = doc.DocumentNode.SelectSingleNode(@"//tr[@height=70]/td[@width=200]").InnerText;
+                var pageNodeText = doc.DocumentNode.SelectSingleNode(@"//tr[@height='70']/td[@width='200']").InnerText;
                 page = PageParser.MedicalListParse(pageNodeText);
                 Console.WriteLine("当前页：" + page.Currentpage + ",共" + page.TotalPage + "页");
                 foreach (var item in MedicalListDataParser.MedicalListParse(doc))
                 {
-                    Console.WriteLine(item);
+                    db.Productions.Add(new Production { ProductionName = item, LSST = DateTime.Now, FromPage = page.Currentpage });
                 }
+                db.SaveChanges();
 
             } while (page.Currentpage < page.TotalPage);
 
@@ -57,7 +59,7 @@ namespace DrugInfo.Crawler
         {
             PhantomJSDriverService service = PhantomJSDriverService.CreateDefaultService();
             //Proxy proxy = new Proxy();
-            //proxy.HttpProxy = string.Format("127.0.0.1:9999");
+            //proxy.HttpProxy = string.Format("36.41.143.57:8118");
             //service.ProxyType = "http";
             //service.Proxy = proxy.HttpProxy;
             return service;

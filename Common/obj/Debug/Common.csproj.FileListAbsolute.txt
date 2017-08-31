@@ -5,3 +5,9 @@ E:\工作\DrugInfoCrawler\Common\bin\Debug\HtmlAgilityPack.pdb
 E:\工作\DrugInfoCrawler\Common\bin\Debug\HtmlAgilityPack.xml
 E:\工作\DrugInfoCrawler\Common\obj\Debug\Common.dll
 E:\工作\DrugInfoCrawler\Common\obj\Debug\Common.pdb
+E:\工作\DrugInfoCrawler\Common\bin\Debug\Common.dll.config
+E:\工作\DrugInfoCrawler\Common\bin\Debug\EntityFramework.dll
+E:\工作\DrugInfoCrawler\Common\bin\Debug\EntityFramework.SqlServer.dll
+E:\工作\DrugInfoCrawler\Common\bin\Debug\EntityFramework.xml
+E:\工作\DrugInfoCrawler\Common\bin\Debug\EntityFramework.SqlServer.xml
+E:\工作\DrugInfoCrawler\Common\bin\Debug\zh-Hans\EntityFramework.resources.dll
