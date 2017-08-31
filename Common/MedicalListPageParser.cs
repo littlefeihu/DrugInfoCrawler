@@ -14,7 +14,7 @@ namespace DrugInfo.Crawler
         /// <param name="pageNodeText"></param>
         /// <returns></returns>
         public static Pager MedicalListParse(string pageNodeText)
-        {
+        { //共 18702条&nbsp;&nbsp;&nbsp;&nbsp;第 1页/共1247页
             var totalCount = pageNodeText.Substring(1, pageNodeText.IndexOf("条") - 1);
             var from = pageNodeText.IndexOf("第") + 1;
             var to = pageNodeText.IndexOf("页") - from;

@@ -17,5 +17,7 @@ namespace Common
         public DateTime? LSST { get; set; }
 
         public int FromPage { get; set; }
+
+        public bool Done { get; set; }
     }
 }

@@ -16,14 +16,24 @@ namespace DrugInfo.Crawler
     {
         static void Main(string[] args)
         {
+            PageParser.MedicalListParse("共 18702条&nbsp;&nbsp;&nbsp;&nbsp;第 1020页/共1247页");
+
             //查看第N页药品
             var driver1 = new PhantomJSDriver(GetPhantomJSDriverService());
             var db = new Model1();
             var frompage = int.Parse(System.Configuration.ConfigurationManager.AppSettings["fromPage"]);
             Pager page = new Pager { Currentpage = frompage };
+            int correctPage = frompage;
+
             do
             {
+                if (page.Currentpage < 10)
+                {
+                    page.Currentpage = correctPage;
+                }
+
                 driver1.Navigate().GoToUrl(GetUrl(page.Currentpage + 1));
+
 
                 Thread.Sleep(3000);
 
@@ -39,6 +49,10 @@ namespace DrugInfo.Crawler
                 var pageNodeText = doc.DocumentNode.SelectSingleNode(@"//tr[@height='70']/td[@width='200']").InnerText;
                 page = PageParser.MedicalListParse(pageNodeText);
                 Console.WriteLine("当前页：" + page.Currentpage + ",共" + page.TotalPage + "页");
+                if (page.Currentpage > 1000)
+                {
+                    correctPage = page.Currentpage;
+                }
                 foreach (var item in MedicalListDataParser.MedicalListParse(doc))
                 {
                     db.Productions.Add(new Production { ProductionName = item, LSST = DateTime.Now, FromPage = page.Currentpage });

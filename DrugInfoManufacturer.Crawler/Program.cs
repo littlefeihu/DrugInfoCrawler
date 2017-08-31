@@ -1,4 +1,5 @@
-﻿using DrugInfo.Crawler;
+﻿using Common;
+using DrugInfo.Crawler;
 using HtmlAgilityPack;
 using OpenQA.Selenium.PhantomJS;
 using System;
@@ -16,38 +17,46 @@ namespace DrugInfoManufacturer.Crawler
     {
         static void Main(string[] args)
         {
-            Console.WriteLine(PingHelper.Ping("113.128.91.59", 48888));
 
             //查看第N页药品
             var driver1 = new PhantomJSDriver(GetPhantomJSDriverService());
-            var frompage = int.Parse(System.Configuration.ConfigurationManager.AppSettings["fromPage"]);
-            Pager page = new Pager { Currentpage = frompage };
-            do
+
+            var db = new Model1();
+            foreach (var product in db.Productions.Where(o => !o.Done).OrderBy(o => o.FromPage))
             {
-                driver1.Navigate().GoToUrl(GetUrl(page.Currentpage + 1));
 
-                Thread.Sleep(3000);
-
-                if (driver1.Title == "403 Forbidden")
+                var frompage = int.Parse(System.Configuration.ConfigurationManager.AppSettings["fromPage"]);
+                Pager page = new Pager { Currentpage = frompage };
+                int correctPage = frompage;
+                do
                 {
-                    Thread.Sleep(1000 * 60 * 10);
-                    continue;
-                }
+                    driver1.Navigate().GoToUrl(GetUrl(page.Currentpage + 1));
 
-                HtmlDocument doc = new HtmlDocument();
-                doc.LoadHtml(driver1.PageSource);
-                //共 18702条&nbsp;&nbsp;&nbsp;&nbsp;第 1页/共1247页
-                var pageNodeText = doc.DocumentNode.SelectSingleNode(@"//tr[@height=70]/td[@width='30%' and @style='padding-left:30px']").InnerText;
-                page = PageParser.MedicalListParse(pageNodeText);
-                Console.WriteLine("当前页：" + page.Currentpage + ",共" + page.TotalPage + "页");
+                    Thread.Sleep(3000);
 
-                foreach (var item in ManufacturerParser.Parse(doc))
-                {
+                    if (driver1.Title == "403 Forbidden")
+                    {
+                        Thread.Sleep(1000 * 60 * 10);
+                        continue;
+                    }
 
-                }
+                    HtmlDocument doc = new HtmlDocument();
+                    doc.LoadHtml(driver1.PageSource);
+                    //共 18702条&nbsp;&nbsp;&nbsp;&nbsp;第 1页/共1247页
+                    var pageNodeText = doc.DocumentNode.SelectSingleNode(@"//tr[@height=70]/td[@width='30%' and @style='padding-left:30px']").InnerText;
+                    page = PageParser.MedicalListParse(pageNodeText);
+                    Console.WriteLine("当前页：" + page.Currentpage + ",共" + page.TotalPage + "页");
 
-            } while (page.Currentpage < page.TotalPage);
+                    foreach (var item in ManufacturerParser.Parse(doc))
+                    {
+                        db.DrugItems.Add(item);
+                    }
 
+                } while (page.Currentpage < page.TotalPage);
+
+                product.Done = true;
+                db.SaveChanges();
+            }
             Console.ReadKey();
         }
 

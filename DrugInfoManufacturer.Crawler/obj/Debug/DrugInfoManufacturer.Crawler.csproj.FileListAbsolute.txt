@@ -11,3 +11,8 @@ E:\工作\DrugInfoCrawler\DrugInfoManufacturer.Crawler\obj\Debug\DrugInfoManufac
 E:\工作\DrugInfoCrawler\DrugInfoManufacturer.Crawler\obj\Debug\DrugInfoManufacturer.Crawler.pdb
 E:\工作\DrugInfoCrawler\DrugInfoManufacturer.Crawler\bin\Debug\WebDriver.dll
 E:\工作\DrugInfoCrawler\DrugInfoManufacturer.Crawler\bin\Debug\WebDriver.xml
+E:\工作\DrugInfoCrawler\DrugInfoManufacturer.Crawler\bin\Debug\EntityFramework.dll
+E:\工作\DrugInfoCrawler\DrugInfoManufacturer.Crawler\bin\Debug\EntityFramework.SqlServer.dll
+E:\工作\DrugInfoCrawler\DrugInfoManufacturer.Crawler\bin\Debug\EntityFramework.xml
+E:\工作\DrugInfoCrawler\DrugInfoManufacturer.Crawler\bin\Debug\EntityFramework.SqlServer.xml
+E:\工作\DrugInfoCrawler\DrugInfoManufacturer.Crawler\bin\Debug\zh-Hans\EntityFramework.resources.dll

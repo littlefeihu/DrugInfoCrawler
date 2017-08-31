@@ -20,13 +20,14 @@ namespace DrugInfoManufacturer.Crawler
 
                 var item = new DrugItem
                 {
-                    Name = columns[1].InnerText,
+                    DrugName = columns[1].InnerText,
                     PiZhunWenHao = columns[2].InnerText,
                     Manufacturer = columns[3].InnerText,
                     DosageForm = columns[4].InnerText,
                     Specification = columns[5].InnerText,
                     CompanyUrl = columns[3].SelectSingleNode("./a").GetAttributeValue("href", ""),
-                    DrugUrl = columns[1].SelectSingleNode("./a").GetAttributeValue("href", "")
+                    DrugUrl = columns[1].SelectSingleNode("./a").GetAttributeValue("href", ""),
+                    LSST = DateTime.Now
                 };
                 yield return item;
             }
