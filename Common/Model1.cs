@@ -15,6 +15,9 @@ namespace Common
         public virtual DbSet<DrugItem> DrugItems { get; set; }
         public virtual DbSet<Production> Productions { get; set; }
 
+        public virtual DbSet<Manufacturer> Manufacturers { get; set; }
+        
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
         }

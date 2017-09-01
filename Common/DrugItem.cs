@@ -33,5 +33,18 @@
         public string CompanyUrl { get; set; }
 
         public DateTime? LSST { get; set; }
+
+        public int ProductId { get; set; }
+
+        public int FromPage { get; set; }
+
+
+        public string Class { get; set; }
+
+        [ForeignKey("ProductId")]
+        public virtual Production Product { get; set; }
+
+
+
     }
 }

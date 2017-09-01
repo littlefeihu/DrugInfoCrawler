@@ -19,5 +19,10 @@ namespace Common
         public int FromPage { get; set; }
 
         public bool Done { get; set; }
+
+
+        public int Importeddrug { get; set; }
+
+        public virtual ICollection<DrugItem> DrugItems { get; set; }
     }
 }

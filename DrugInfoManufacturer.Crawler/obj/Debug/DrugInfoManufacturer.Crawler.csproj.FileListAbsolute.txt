@@ -16,3 +16,5 @@ E:\工作\DrugInfoCrawler\DrugInfoManufacturer.Crawler\bin\Debug\EntityFramework
 E:\工作\DrugInfoCrawler\DrugInfoManufacturer.Crawler\bin\Debug\EntityFramework.xml
 E:\工作\DrugInfoCrawler\DrugInfoManufacturer.Crawler\bin\Debug\EntityFramework.SqlServer.xml
 E:\工作\DrugInfoCrawler\DrugInfoManufacturer.Crawler\bin\Debug\zh-Hans\EntityFramework.resources.dll
+E:\工作\DrugInfoCrawler\DrugInfoManufacturer.Crawler\bin\Debug\Newtonsoft.Json.dll
+E:\工作\DrugInfoCrawler\DrugInfoManufacturer.Crawler\bin\Debug\Newtonsoft.Json.xml

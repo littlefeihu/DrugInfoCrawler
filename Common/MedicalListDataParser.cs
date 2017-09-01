@@ -9,6 +9,11 @@ namespace DrugInfo.Crawler
 {
     public class MedicalListDataParser
     {
+        /// <summary>
+        /// 获取药品列表
+        /// </summary>
+        /// <param name="doc"></param>
+        /// <returns></returns>
         public static IEnumerable<string> MedicalListParse(HtmlDocument doc)
         {
             var dataNodes = doc.DocumentNode.SelectNodes("//tr[@height=30]/td[@width=241 and @style='padding-left:15px;color:#000000;font-size:12px;text-align:left']");

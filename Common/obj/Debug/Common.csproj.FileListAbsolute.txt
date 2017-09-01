@@ -12,3 +12,5 @@ E:\工作\DrugInfoCrawler\Common\bin\Debug\EntityFramework.xml
 E:\工作\DrugInfoCrawler\Common\bin\Debug\EntityFramework.SqlServer.xml
 E:\工作\DrugInfoCrawler\Common\bin\Debug\zh-Hans\EntityFramework.resources.dll
 E:\工作\DrugInfoCrawler\Common\obj\Debug\Common.csprojResolveAssemblyReference.cache
+E:\工作\DrugInfoCrawler\Common\bin\Debug\Newtonsoft.Json.dll
+E:\工作\DrugInfoCrawler\Common\bin\Debug\Newtonsoft.Json.xml
