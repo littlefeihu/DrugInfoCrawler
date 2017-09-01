@@ -1,0 +1,6 @@
+E:\工作\DrugInfoCrawler\Manufacturer.Crawler\bin\Debug\Manufacturer.Crawler.exe.config
+E:\工作\DrugInfoCrawler\Manufacturer.Crawler\bin\Debug\Manufacturer.Crawler.exe
+E:\工作\DrugInfoCrawler\Manufacturer.Crawler\bin\Debug\Manufacturer.Crawler.pdb
+E:\工作\DrugInfoCrawler\Manufacturer.Crawler\obj\Debug\Manufacturer.Crawler.csprojResolveAssemblyReference.cache
+E:\工作\DrugInfoCrawler\Manufacturer.Crawler\obj\Debug\Manufacturer.Crawler.exe
+E:\工作\DrugInfoCrawler\Manufacturer.Crawler\obj\Debug\Manufacturer.Crawler.pdb
