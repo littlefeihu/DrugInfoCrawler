@@ -69,6 +69,7 @@
     <Compile Include="PingHelper.cs" />
     <Compile Include="DrugItem.cs" />
     <Compile Include="Manufacturer.cs" />
+    <Compile Include="GMPInfo.cs" />
     <Compile Include="Production.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

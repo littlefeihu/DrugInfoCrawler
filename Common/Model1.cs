@@ -11,12 +11,12 @@ namespace Common
             : base("name=DrugDB")
         {
         }
-
         public virtual DbSet<DrugItem> DrugItems { get; set; }
         public virtual DbSet<Production> Productions { get; set; }
 
         public virtual DbSet<Manufacturer> Manufacturers { get; set; }
-        
+
+        public virtual DbSet<GMPInfo> GMPInfos { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

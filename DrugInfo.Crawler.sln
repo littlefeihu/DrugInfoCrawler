@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "Common\Common.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GetManufacturer.Crawler", "Manufacturer.Crawler\GetManufacturer.Crawler.csproj", "{ED27BEA0-EBC0-4211-B920-13BA5844E062}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DrugBaiKe.Crawler", "DrugBaiKe.Crawler\DrugBaiKe.Crawler.csproj", "{689CED78-3A38-4688-9036-1A9D2E8E184F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{ED27BEA0-EBC0-4211-B920-13BA5844E062}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ED27BEA0-EBC0-4211-B920-13BA5844E062}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ED27BEA0-EBC0-4211-B920-13BA5844E062}.Release|Any CPU.Build.0 = Release|Any CPU
+		{689CED78-3A38-4688-9036-1A9D2E8E184F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{689CED78-3A38-4688-9036-1A9D2E8E184F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{689CED78-3A38-4688-9036-1A9D2E8E184F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{689CED78-3A38-4688-9036-1A9D2E8E184F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

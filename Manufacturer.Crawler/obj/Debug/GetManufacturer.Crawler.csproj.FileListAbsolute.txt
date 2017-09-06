@@ -1,5 +1,4 @@
 E:\工作\DrugInfoCrawler\Manufacturer.Crawler\bin\Debug\GetManufacturer.Crawler.exe.config
-E:\工作\DrugInfoCrawler\Manufacturer.Crawler\obj\Debug\GetManufacturer.Crawler.csprojResolveAssemblyReference.cache
 E:\工作\DrugInfoCrawler\Manufacturer.Crawler\bin\Debug\GetManufacturer.Crawler.exe
 E:\工作\DrugInfoCrawler\Manufacturer.Crawler\bin\Debug\GetManufacturer.Crawler.pdb
 E:\工作\DrugInfoCrawler\Manufacturer.Crawler\bin\Debug\Common.dll
@@ -16,5 +15,6 @@ E:\工作\DrugInfoCrawler\Manufacturer.Crawler\bin\Debug\HtmlAgilityPack.xml
 E:\工作\DrugInfoCrawler\Manufacturer.Crawler\bin\Debug\WebDriver.xml
 E:\工作\DrugInfoCrawler\Manufacturer.Crawler\bin\Debug\Newtonsoft.Json.xml
 E:\工作\DrugInfoCrawler\Manufacturer.Crawler\bin\Debug\zh-Hans\EntityFramework.resources.dll
+E:\工作\DrugInfoCrawler\Manufacturer.Crawler\obj\Debug\GetManufacturer.Crawler.csprojResolveAssemblyReference.cache
 E:\工作\DrugInfoCrawler\Manufacturer.Crawler\obj\Debug\GetManufacturer.Crawler.exe
 E:\工作\DrugInfoCrawler\Manufacturer.Crawler\obj\Debug\GetManufacturer.Crawler.pdb

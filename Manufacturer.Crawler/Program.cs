@@ -17,61 +17,59 @@ namespace GetManufacturer.Crawler
     {
         static void Main(string[] args)
         {
-
-            var driver1 = new PhantomJSDriver(GetPhantomJSDriverService());
-
-            Pager page = new Pager { Currentpage = 0 };
-            var url = GetUrl();
-            do
+            var db = new Model1();
+            foreach (var manufacturer in db.Manufacturers.Where(o => !o.Done).OrderBy(o => o.ID))
             {
                 try
                 {
                     var db1 = new Model1();
-                    //driver1.Navigate().GoToUrl(url);
-                    var html = HttpHelper.Get(url).Result;
+
+                    string html = "";
+                    html = HttpHelper.Get("http://app2.sfda.gov.cn" + manufacturer.Link).Result;
+
                     HtmlDocument doc = new HtmlDocument();
-                    doc.LoadHtml(driver1.PageSource);
+                    doc.LoadHtml(html);
 
-                    //Thread.Sleep(1000); 
-
-                    //共 18702条&nbsp;&nbsp;&nbsp;&nbsp;第 1页/共1247页
-                    var pageNodeText = doc.DocumentNode.SelectSingleNode(@"//tr/td[@width='200' and @align='center']").InnerText;
-                    page = PageParser.MedicalListParse(pageNodeText);
-
-                    if (page.TotalCount == 0)
+                    List<GMPInfo> gmpInfos;
+                    var filledManufacturer = ManufacturerListParser.Parse(doc, out gmpInfos);
+                    if (filledManufacturer != null)
                     {
-                        break;
+                        filledManufacturer.Link = manufacturer.Link;
+                        filledManufacturer.LSST = DateTime.Now;
+                        filledManufacturer.Done = true;
+                        filledManufacturer.ManufacturerName = manufacturer.ManufacturerName;
+                        filledManufacturer.ID = manufacturer.ID;
+                        db1.Entry(filledManufacturer).State = System.Data.Entity.EntityState.Modified;
+                    }
+                    else
+                    {
+                        db1.Manufacturers.FirstOrDefault(o => o.ID == manufacturer.ID).Done = true;
+
                     }
 
-                    Console.WriteLine("当前页：" + page.Currentpage + ",共" + page.TotalPage + "页");
-                    foreach (var item in ManufacturerListParser.Parse(doc))
+                    foreach (var gmpInfo in gmpInfos)
                     {
-                        db1.Manufacturers.Add(item);
-                    }
-                    try
-                    {
-                        db1.SaveChanges();
-                    }
-                    catch (Exception)
-                    {
-                        db1.SaveChanges();
+                        gmpInfo.ManufacturerID = manufacturer.ID;
+                        db1.GMPInfos.Add(gmpInfo);
                     }
 
-                    Console.WriteLine("保存完成");
+                    db1.SaveChanges();
+
+                    Thread.Sleep(3000);
+                    Console.WriteLine("保存完成" + manufacturer.ManufacturerName);
                 }
                 catch (Exception)
                 {
                     continue;
                 }
-            } while (page.Currentpage < page.TotalPage);
-
-
+            }
             Console.ReadKey();
         }
 
         private static string GetUrl()
         {
-            return string.Format("http://app1.sfda.gov.cn/datasearch/face3/base.jsp?tableId=34&tableName=TABLE34&title=%E8%8D%AF%E5%93%81%E7%94%9F%E4%BA%A7%E4%BC%81%E4%B8%9A&bcId=118103348874362715907884020353");
+            return "http://app2.sfda.gov.cn//datasearchp/index1.do?tableId=25&company=company&tableName=TABLE25&tableView=%E5%9B%BD%E4%BA%A7%E8%8D%AF%E5%93%81&Id=207919";
+            //return string.Format("http://app2.sfda.gov.cn//datasearchp/index1.do?tableId=25&company=company&tableName=TABLE25&tableView=%E5%9B%BD%E4%BA%A7%E8%8D%AF%E5%93%81&Id=65346");
         }
         private static PhantomJSDriverService GetPhantomJSDriverService()
         {
