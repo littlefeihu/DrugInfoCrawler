@@ -11,11 +11,40 @@ namespace DrugBaiKe.Crawler
     {
         public static void Parse(HtmlDocument doc)
         {
-            var titles = doc.DocumentNode.SelectNodes("\\dt[@class='catalog-title level1']");
-            foreach (var title in titles)
+            var sidetitleElements = doc.DocumentNode.SelectNodes("//dt[@class='catalog-title level1']");
+            foreach (var sidetitleElement in sidetitleElements)
             {
-                title.SelectSingleNode("./span[@nslog-type='10002802']");
+                var title = sidetitleElement.SelectSingleNode("./a/span/span[@nslog-type='10002802']").InnerText;
+
             }
+
+            var titleElements = doc.DocumentNode.SelectNodes("//div[@class='para-title level-2']");
+            foreach (var titleElement in titleElements)
+            {
+                var content = GetContent(titleElement);
+
+            }
+
+        }
+
+
+        private static string GetContent(HtmlNode titleElement)
+        {
+            string content = "";
+            var node = titleElement.NextSibling;
+            var attrclass = node.GetAttributeValue("class", "");
+            do
+            {
+                if (attrclass == "para")
+                {
+                    content += node.OuterHtml;
+                }
+
+                node = node.NextSibling;
+                attrclass = node.GetAttributeValue("class", "");
+
+            } while (attrclass == "para" || node.NodeType == HtmlNodeType.Text);
+            return content;
 
         }
     }
