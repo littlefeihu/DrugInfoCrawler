@@ -97,6 +97,10 @@ namespace Common
         /// </summary>
         public string Indate { get; set; }
         /// <summary>
+        /// 执行标准
+        /// </summary>
+        public string CarriedStandard { get; set; }
+        /// <summary>
         /// HTML内容
         /// </summary>
         public string htmlContent { get; set; }
