@@ -61,6 +61,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Constants.cs" />
+    <Compile Include="Cnki.cs" />
     <Compile Include="HttpHelper.cs" />
     <Compile Include="MedicalListDataParser.cs" />
     <Compile Include="MedicalListPageParser.cs" />

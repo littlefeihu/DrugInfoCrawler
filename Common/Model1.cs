@@ -18,6 +18,8 @@ namespace Common
 
         public virtual DbSet<GMPInfo> GMPInfos { get; set; }
 
+        public virtual DbSet<Cnki> Cnkis { get; set; }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
         }
