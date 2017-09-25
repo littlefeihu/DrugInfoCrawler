@@ -38,7 +38,10 @@ namespace DrugBaiKe.Crawler
             if (basicInfoDiv != null)
                 pro.BasicInfo = basicInfoDiv.InnerHtml;
 
+
             pro.Catalog = doc.DocumentNode.SelectSingleNode("//dl[@class='catalog-list']").InnerHtml;
+
+
             for (int i = 0; i < titles.Count; i++)
             {
                 switch (titles[i])

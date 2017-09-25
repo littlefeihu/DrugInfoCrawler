@@ -24,18 +24,30 @@ namespace DrugBaiKe.Crawler
                 HtmlDocument doc = new HtmlDocument();
                 doc.LoadHtml(html);
 
-                var pro = BaiduBaikeParser.Parse(doc);
-                if (pro == null)
-                    continue;
-                pro.ID = product.ID;
-                pro.ProductionName = product.ProductionName;
-                pro.LSST = DateTime.Now;
-                pro.Done = true;
-                pro.FromPage = product.FromPage;
-                db1.Entry(pro).State = System.Data.Entity.EntityState.Modified;
-                db1.SaveChanges();
+                try
+                {
+                    var pro = BaiduBaikeParser.Parse(doc);
+                    if (pro == null)
+                    {
+                        throw new Exception("error");
+                    }
 
-                Console.WriteLine("保存成功" + name);
+                    pro.ID = product.ID;
+                    pro.ProductionName = product.ProductionName;
+                    pro.LSST = DateTime.Now;
+                    pro.Done = true;
+                    pro.FromPage = product.FromPage;
+                    db1.Entry(pro).State = System.Data.Entity.EntityState.Modified;
+                    db1.SaveChanges();
+
+                    Console.WriteLine("保存成功" + name);
+                }
+                catch (Exception)
+                {
+                    product.Done = true;
+                    db1.SaveChanges();
+                    continue;
+                }
                 Thread.Sleep(1000);
             }
 
