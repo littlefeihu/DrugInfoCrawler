@@ -10,7 +10,7 @@ using System.Windows.Forms;
 using HtmlAgilityPack;
 using NPOIHelperTest;
 using Common;
-namespace Cnki.net
+namespace Cnkinet
 {
     public partial class Form1 : Form
     {
@@ -20,6 +20,18 @@ namespace Cnki.net
 
             webBrowser1.Navigate("http://kns.cnki.net/kns/brief/default_result.aspx");
 
+            InitData();
+
+            buttonX2.Enabled = false;
+        }
+
+
+        private void InitData()
+        {
+            var db1 = new Model1();
+
+            var list = db1.Cnkis.Where(o => o.Category != null).Select(o => o.Category).Distinct().ToList();
+            comboBoxEx1.DataSource = list;
         }
 
         private void btndownload_Click(object sender, EventArgs e)
@@ -55,7 +67,7 @@ namespace Cnki.net
 
                 foreach (HtmlNode column in columns)
                 {
-                    dt.Columns.Add(column.InnerText);
+                    dt.Columns.Add(string.IsNullOrEmpty(column.InnerText) ? "序号" : column.InnerText);
                     columnList.Add(column.InnerText);
                 }
                 int rowIndex = 0;
@@ -99,6 +111,43 @@ namespace Cnki.net
             {
                 MessageBox.Show("无数据可下载");
             }
+        }
+
+
+        Cnki cnki = null;
+        private void buttonX1_Click(object sender, EventArgs e)
+        {
+            buttonX2.Enabled = false;
+            if (string.IsNullOrEmpty(textBoxX1.Text))
+            {
+                MessageBox.Show("关键词不能为空");
+                return;
+            }
+
+            var db1 = new Model1();
+
+            cnki = db1.Cnkis.Where(o => o.Category == comboBoxEx1.Text && o.KeyWord == textBoxX1.Text).FirstOrDefault();
+            if (cnki == null)
+            {
+                MessageBox.Show("没找到记录");
+                return;
+            }
+            var dataTable = DataTableSerializer.DeserializeDataTable(cnki.DataString);
+            dataGridViewX1.DataSource = dataTable;
+
+            buttonX2.Enabled = dataTable.Rows.Count > 0;
+        }
+
+        private void buttonX2_Click(object sender, EventArgs e)
+        {
+            SendToCMSForm f = new SendToCMSForm(cnki.DataString);
+            f.StartPosition = FormStartPosition.CenterParent;
+            f.ShowDialog();
+        }
+
+        private void buttonX3_Click(object sender, EventArgs e)
+        {
+            InitData();
         }
     }
 }

@@ -8,6 +8,6 @@ namespace Common
 {
     public class Constants
     {
-        public const string CONTENT_TYPEJSON = "application/xml";
+        public const string CONTENT_TYPEJSON = "application/json";
     }
 }

@@ -13,7 +13,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GetManufacturer.Crawler", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DrugBaiKe.Crawler", "DrugBaiKe.Crawler\DrugBaiKe.Crawler.csproj", "{689CED78-3A38-4688-9036-1A9D2E8E184F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cnki.net", "Cnki.net\Cnki.net.csproj", "{799C7C91-D84E-4707-A86B-5905FD361730}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cnkinet", "Cnki.net\Cnkinet.csproj", "{799C7C91-D84E-4707-A86B-5905FD361730}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -33,7 +33,8 @@ namespace Common
         }
         public static async Task<string> Post(string url, Dictionary<string, string> postdata)
         {
-            var content = new FormUrlEncodedContent(postdata)
+            var jsonStr = JsonConvert.SerializeObject(postdata);
+            var content = new StringContent(jsonStr)
             {
                 Headers =
                 {
@@ -47,7 +48,7 @@ namespace Common
 
             return responseString;
         }
- 
+
         public static async Task<T> Post<T>(string url, Dictionary<string, string> postdata)
         {
 

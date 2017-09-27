@@ -1,7 +1,3 @@
-E:\工作\DrugInfoCrawler\Cnki.net\obj\Debug\Cnki.net.csprojResolveAssemblyReference.cache
-E:\工作\DrugInfoCrawler\Cnki.net\obj\Debug\Cnki.net.Form1.resources
-E:\工作\DrugInfoCrawler\Cnki.net\obj\Debug\Cnki.net.Properties.Resources.resources
-E:\工作\DrugInfoCrawler\Cnki.net\obj\Debug\Cnki.net.csproj.GenerateResource.Cache
 E:\工作\DrugInfoCrawler\Cnki.net\bin\Debug\Cnki.net.exe.config
 E:\工作\DrugInfoCrawler\Cnki.net\bin\Debug\Cnki.net.exe
 E:\工作\DrugInfoCrawler\Cnki.net\bin\Debug\Cnki.net.pdb
@@ -23,5 +19,10 @@ E:\工作\DrugInfoCrawler\Cnki.net\bin\Debug\HtmlAgilityPack.xml
 E:\工作\DrugInfoCrawler\Cnki.net\bin\Debug\NPOI.xml
 E:\工作\DrugInfoCrawler\Cnki.net\bin\Debug\Newtonsoft.Json.xml
 E:\工作\DrugInfoCrawler\Cnki.net\bin\Debug\zh-Hans\EntityFramework.resources.dll
+E:\工作\DrugInfoCrawler\Cnki.net\obj\Debug\Cnki.net.csprojResolveAssemblyReference.cache
+E:\工作\DrugInfoCrawler\Cnki.net\obj\Debug\Cnki.net.Form1.resources
+E:\工作\DrugInfoCrawler\Cnki.net\obj\Debug\Cnki.net.Properties.Resources.resources
+E:\工作\DrugInfoCrawler\Cnki.net\obj\Debug\Cnki.net.SendToCMSForm.resources
+E:\工作\DrugInfoCrawler\Cnki.net\obj\Debug\Cnki.net.csproj.GenerateResource.Cache
 E:\工作\DrugInfoCrawler\Cnki.net\obj\Debug\Cnki.net.exe
 E:\工作\DrugInfoCrawler\Cnki.net\obj\Debug\Cnki.net.pdb
