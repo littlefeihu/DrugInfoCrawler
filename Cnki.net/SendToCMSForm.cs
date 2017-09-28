@@ -14,6 +14,7 @@ namespace Cnkinet
     public partial class SendToCMSForm : Form
     {
         string _content;
+        string url = "http://www.yzd2017.com/";
         public SendToCMSForm(string content)
         {
             InitializeComponent();
@@ -24,7 +25,7 @@ namespace Cnkinet
             {
                 Dictionary<string, string> postdata = new Dictionary<string, string>();
                 postdata.Add("name", "中药数据库");
-                var basetypes = await HttpHelper.Post<List<DataItem>>("http://localhost:56362/PublishAPI/GetBaseTypes", postdata);
+                var basetypes = await HttpHelper.Post<List<DataItem>>(url + "PublishAPI/GetBaseTypes", postdata);
                 Action action = () =>
                 {
                     comboBoxEx1.DisplayMember = "Name";
@@ -35,7 +36,7 @@ namespace Cnkinet
                 postdata.Clear();
 
                 postdata.Add("typeid", "E70B4F1A-2A99-49A4-BFA3-3D1FF159992A");
-                var datastructures = await HttpHelper.Post<List<DataItem>>("http://localhost:56362/PublishAPI/GetDataStructures", postdata);
+                var datastructures = await HttpHelper.Post<List<DataItem>>(url + "PublishAPI/GetDataStructures", postdata);
 
                 Action action1 = () =>
                 {
@@ -55,7 +56,7 @@ namespace Cnkinet
             postdata.Add("keyword", textBoxX1.Text);
             postdata.Add("datastructureid", comboBoxEx2.SelectedValue.ToString());
 
-            var basetypes = await HttpHelper.Post<List<DataItem>>("http://localhost:56362/PublishAPI/GetData", postdata);
+            var basetypes = await HttpHelper.Post<List<DataItem>>(url + "PublishAPI/GetData", postdata);
             Action action1 = () =>
             {
                 dataGridViewX1.DataSource = basetypes;
@@ -76,7 +77,7 @@ namespace Cnkinet
                 postdata.Add("content", this._content);
                 postdata.Add("datastructureid", comboBoxEx2.SelectedValue.ToString());
                 postdata.Add("customerDataId", dataGridViewX1.CurrentRow.Cells["customerDataId"].Value.ToString());
-                var result = await HttpHelper.Post("http://localhost:56362/PublishAPI/Publish", postdata);
+                var result = await HttpHelper.Post(url + "PublishAPI/Publish", postdata);
                 if (result == "true")
                 {
                     MessageBox.Show("发布成功");

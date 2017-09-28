@@ -1,0 +1,6 @@
+E:\工作\DrugInfoCrawler\RandomTest\bin\Debug\RandomTest.exe.config
+E:\工作\DrugInfoCrawler\RandomTest\bin\Debug\RandomTest.exe
+E:\工作\DrugInfoCrawler\RandomTest\bin\Debug\RandomTest.pdb
+E:\工作\DrugInfoCrawler\RandomTest\obj\Debug\RandomTest.csprojResolveAssemblyReference.cache
+E:\工作\DrugInfoCrawler\RandomTest\obj\Debug\RandomTest.exe
+E:\工作\DrugInfoCrawler\RandomTest\obj\Debug\RandomTest.pdb

@@ -15,6 +15,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DrugBaiKe.Crawler", "DrugBa
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cnkinet", "Cnki.net\Cnkinet.csproj", "{799C7C91-D84E-4707-A86B-5905FD361730}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenerateData", "GenerateData\GenerateData.csproj", "{DF73B34C-89B6-4A03-9C9C-DEE29A8BDECA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RandomTest", "RandomTest\RandomTest.csproj", "{09C29DC4-90B7-4F08-910D-BB1E3A14A68E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +49,14 @@ Global
 		{799C7C91-D84E-4707-A86B-5905FD361730}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{799C7C91-D84E-4707-A86B-5905FD361730}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{799C7C91-D84E-4707-A86B-5905FD361730}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DF73B34C-89B6-4A03-9C9C-DEE29A8BDECA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DF73B34C-89B6-4A03-9C9C-DEE29A8BDECA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DF73B34C-89B6-4A03-9C9C-DEE29A8BDECA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DF73B34C-89B6-4A03-9C9C-DEE29A8BDECA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{09C29DC4-90B7-4F08-910D-BB1E3A14A68E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{09C29DC4-90B7-4F08-910D-BB1E3A14A68E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{09C29DC4-90B7-4F08-910D-BB1E3A14A68E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{09C29DC4-90B7-4F08-910D-BB1E3A14A68E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

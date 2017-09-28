@@ -1,0 +1,15 @@
+E:\工作\DrugInfoCrawler\GenerateData\bin\Debug\GenerateData.exe.config
+E:\工作\DrugInfoCrawler\GenerateData\bin\Debug\GenerateData.exe
+E:\工作\DrugInfoCrawler\GenerateData\bin\Debug\GenerateData.pdb
+E:\工作\DrugInfoCrawler\GenerateData\bin\Debug\ICSharpCode.SharpZipLib.dll
+E:\工作\DrugInfoCrawler\GenerateData\bin\Debug\NPOI.dll
+E:\工作\DrugInfoCrawler\GenerateData\bin\Debug\NPOI.OOXML.dll
+E:\工作\DrugInfoCrawler\GenerateData\bin\Debug\NPOI.OpenXml4Net.dll
+E:\工作\DrugInfoCrawler\GenerateData\bin\Debug\NPOI.OpenXmlFormats.dll
+E:\工作\DrugInfoCrawler\GenerateData\bin\Debug\NPOI.xml
+E:\工作\DrugInfoCrawler\GenerateData\obj\Debug\GenerateData.Form1.resources
+E:\工作\DrugInfoCrawler\GenerateData\obj\Debug\GenerateData.Properties.Resources.resources
+E:\工作\DrugInfoCrawler\GenerateData\obj\Debug\GenerateData.csproj.GenerateResource.Cache
+E:\工作\DrugInfoCrawler\GenerateData\obj\Debug\GenerateData.exe
+E:\工作\DrugInfoCrawler\GenerateData\obj\Debug\GenerateData.pdb
+E:\工作\DrugInfoCrawler\GenerateData\obj\Debug\GenerateData.csprojResolveAssemblyReference.cache
