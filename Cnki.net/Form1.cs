@@ -87,10 +87,13 @@ namespace Cnkinet
                     }
                     rowIndex += 1;
                 }
-                saveFileDialog1.Filter = "(*.xls)|*.xls";
-                if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+                if (checkBoxX1.Checked)
                 {
-                    NPOIHelper.DataTableToExcel(dt, "中国知网", saveFileDialog1.FileName);
+                    saveFileDialog1.Filter = "(*.xls)|*.xls";
+                    if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+                    {
+                        NPOIHelper.DataTableToExcel(dt, "中国知网", saveFileDialog1.FileName);
+                    }
                 }
                 var body = DataTableSerializer.SerializeDataTableXml(dt);
 
@@ -115,6 +118,7 @@ namespace Cnkinet
 
 
         Cnki cnki = null;
+        DataTable dataTable = null;
         private void buttonX1_Click(object sender, EventArgs e)
         {
             buttonX2.Enabled = false;
@@ -132,7 +136,14 @@ namespace Cnkinet
                 MessageBox.Show("没找到记录");
                 return;
             }
-            var dataTable = DataTableSerializer.DeserializeDataTable(cnki.DataString);
+            dataTable = DataTableSerializer.DeserializeDataTable(cnki.DataString);
+            System.Windows.Forms.DataGridViewCheckBoxColumn Column1;
+            Column1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            Column1.HeaderText = "选择";
+            Column1.Name = "Select";
+
+            this.dataGridViewX1.Columns.Add(Column1);
+
             dataGridViewX1.DataSource = dataTable;
 
             buttonX2.Enabled = dataTable.Rows.Count > 0;
@@ -140,7 +151,21 @@ namespace Cnkinet
 
         private void buttonX2_Click(object sender, EventArgs e)
         {
-            SendToCMSForm f = new SendToCMSForm(cnki.DataString);
+            var selectedDataTable = dataTable.Clone();
+            foreach (DataGridViewRow row in dataGridViewX1.SelectedRows)
+            {
+                if (row.DataBoundItem == null)
+                    continue;
+
+                var newrow = ((System.Data.DataRowView)(row.DataBoundItem)).Row.ItemArray;
+
+                selectedDataTable.Rows.Add(newrow);
+            }
+
+            var dataString = DataTableSerializer.SerializeDataTableXml(selectedDataTable);
+
+            SendToCMSForm f = new SendToCMSForm(dataString);
+
             f.StartPosition = FormStartPosition.CenterParent;
             f.ShowDialog();
         }
@@ -148,6 +173,29 @@ namespace Cnkinet
         private void buttonX3_Click(object sender, EventArgs e)
         {
             InitData();
+        }
+
+        private void dataGridViewX1_CurrentCellDirtyStateChanged(object sender, EventArgs e)
+        {
+            dataGridViewX1.CommitEdit(DataGridViewDataErrorContexts.Commit);
+        }
+
+        private void dataGridViewX1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == 0 && e.RowIndex != -1)
+            {
+                DataGridViewCheckBoxCell checkCell = (DataGridViewCheckBoxCell)this.dataGridViewX1.Rows[e.RowIndex].Cells[0];
+                Boolean flag = Convert.ToBoolean(checkCell.Value);
+
+                this.dataGridViewX1.Rows[e.RowIndex].Selected = flag;
+            }
+        }
+
+        private void dataGridViewX1_RowStateChanged(object sender, DataGridViewRowStateChangedEventArgs e)
+        {
+            DataGridViewCheckBoxCell checkCell = (DataGridViewCheckBoxCell)e.Row.Cells[0];
+            checkCell.Value = e.Row.Selected;
+
         }
     }
 }
