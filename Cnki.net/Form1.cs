@@ -28,10 +28,12 @@ namespace Cnkinet
 
         private void InitData()
         {
-            var db1 = new Model1();
+            //var db1 = new Model1();
 
-            var list = db1.Cnkis.Where(o => o.Category != null).Select(o => o.Category).Distinct().ToList();
-            comboBoxEx1.DataSource = list;
+            //var list = db1.Cnkis.Where(o => o.Category != null).Select(o => o.Category).Distinct().ToList();
+            //comboBoxEx1.DataSource = list;
+
+            comboBoxEx1.DataSource = new List<string> { "文献", "期刊", "博硕士", "会议", "报纸", "专利" };
         }
 
         private void btndownload_Click(object sender, EventArgs e)
@@ -95,7 +97,93 @@ namespace Cnkinet
                         NPOIHelper.DataTableToExcel(dt, "中国知网", saveFileDialog1.FileName);
                     }
                 }
-                var body = DataTableSerializer.SerializeDataTableXml(dt);
+
+                DataTable standardTable = new DataTable("standardTable");
+                standardTable.Columns.Add("篇名");
+                standardTable.Columns.Add("作者");
+                standardTable.Columns.Add("刊名");
+                standardTable.Columns.Add("年期");
+                standardTable.Columns.Add("下载数");
+                switch (currentTag)
+                {
+                    case "文献":
+                        foreach (DataRow row in dt.Rows)
+                        {
+                            var newrow = standardTable.NewRow();
+                            newrow["篇名"] = row["题名"];
+                            newrow["作者"] = row["作者"];
+                            newrow["刊名"] = row["来源"];
+                            newrow["年期"] = row["发表时间"];
+                            newrow["下载数"] = row["下载"];
+                            standardTable.Rows.Add(newrow);
+                        }
+                        break;
+                    case "期刊":
+                        foreach (DataRow row in dt.Rows)
+                        {
+                            var newrow = standardTable.NewRow();
+                            newrow["篇名"] = row["篇名"];
+                            newrow["作者"] = row["作者"];
+                            newrow["刊名"] = row["刊名"];
+                            newrow["年期"] = row["年/期"];
+                            newrow["下载数"] = row["下载"];
+                            standardTable.Rows.Add(newrow);
+                        }
+                        break;
+                    case "博硕士":
+                        foreach (DataRow row in dt.Rows)
+                        {
+                            var newrow = standardTable.NewRow();
+                            newrow["篇名"] = row["中文题名"];
+                            newrow["作者"] = row["作者"].ToString() + row["数据库"].ToString();
+                            newrow["刊名"] = row["学位授予单位"];
+                            newrow["年期"] = row["学位年度"];
+                            newrow["下载数"] = row["下载"];
+                            standardTable.Rows.Add(newrow);
+                        }
+                        break;
+                    case "会议":
+                        foreach (DataRow row in dt.Rows)
+                        {
+                            var newrow = standardTable.NewRow();
+                            newrow["篇名"] = row["篇名"];
+                            newrow["作者"] = row["作者"];
+                            newrow["刊名"] = row["会议名称"];
+                            newrow["年期"] = row["时间"];
+                            newrow["下载数"] = row["下载"];
+                            standardTable.Rows.Add(newrow);
+                        }
+                        break;
+                    case "报纸":
+                        foreach (DataRow row in dt.Rows)
+                        {
+                            var newrow = standardTable.NewRow();
+                            newrow["篇名"] = row["题名"];
+                            newrow["作者"] = row["作者"];
+                            newrow["刊名"] = row["报纸名称"];
+                            newrow["年期"] = row["日期"];
+                            newrow["下载数"] = row["下载"];
+                            standardTable.Rows.Add(newrow);
+                        }
+                        break;
+                    case "专利":
+                        foreach (DataRow row in dt.Rows)
+                        {
+                            var newrow = standardTable.NewRow();
+                            newrow["篇名"] = row["专利名称"];
+                            newrow["作者"] = row["申请人"];
+                            newrow["刊名"] = row["数据库"];
+                            newrow["年期"] = row["申请日"];
+                            newrow["下载数"] = row["下载"];
+                            standardTable.Rows.Add(newrow);
+                        }
+                        break;
+                    default:
+                        break;
+                }
+
+
+                var body = DataTableSerializer.SerializeDataTableXml(standardTable);
 
                 var key = string.Join(",", columnList);
 
@@ -108,7 +196,7 @@ namespace Cnkinet
                     Category = currentTag
                 });
                 db1.SaveChanges();
-
+                MessageBox.Show("下载完成");
             }
             else
             {
@@ -127,13 +215,14 @@ namespace Cnkinet
                 MessageBox.Show("关键词不能为空");
                 return;
             }
-
+            this.dataGridViewX1.Columns.Clear();
             var db1 = new Model1();
 
-            cnki = db1.Cnkis.Where(o => o.Category == comboBoxEx1.Text && o.KeyWord == textBoxX1.Text).FirstOrDefault();
+            cnki = db1.Cnkis.Where(o => o.Category == comboBoxEx1.Text && o.KeyWord.Contains(textBoxX1.Text)).FirstOrDefault();
             if (cnki == null)
             {
                 MessageBox.Show("没找到记录");
+                dataGridViewX1.DataSource = new DataTable();
                 return;
             }
             dataTable = DataTableSerializer.DeserializeDataTable(cnki.DataString);

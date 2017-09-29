@@ -15,6 +15,8 @@ namespace Cnkinet
     {
         string _content;
         string url = "http://www.yzd2017.com/";
+        //string url = " http://localhost:56362/";
+
         public SendToCMSForm(string content)
         {
             InitializeComponent();

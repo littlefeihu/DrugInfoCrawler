@@ -33,13 +33,13 @@
             this.webBrowser1 = new System.Windows.Forms.WebBrowser();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.checkBoxX1 = new DevComponents.DotNetBar.Controls.CheckBoxX();
             this.btndownload = new System.Windows.Forms.Button();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.tabControl1 = new DevComponents.DotNetBar.TabControl();
             this.tabControlPanel2 = new DevComponents.DotNetBar.TabControlPanel();
             this.dataGridViewX1 = new DevComponents.DotNetBar.Controls.DataGridViewX();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.buttonX3 = new DevComponents.DotNetBar.ButtonX();
             this.buttonX2 = new DevComponents.DotNetBar.ButtonX();
             this.labelX1 = new DevComponents.DotNetBar.LabelX();
             this.labelX2 = new DevComponents.DotNetBar.LabelX();
@@ -49,7 +49,6 @@
             this.tabItem2 = new DevComponents.DotNetBar.TabItem(this.components);
             this.tabControlPanel1 = new DevComponents.DotNetBar.TabControlPanel();
             this.tabItem1 = new DevComponents.DotNetBar.TabItem(this.components);
-            this.checkBoxX1 = new DevComponents.DotNetBar.Controls.CheckBoxX();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tabControl1)).BeginInit();
@@ -93,6 +92,19 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1120, 74);
             this.panel1.TabIndex = 1;
+            // 
+            // checkBoxX1
+            // 
+            // 
+            // 
+            // 
+            this.checkBoxX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.checkBoxX1.Location = new System.Drawing.Point(145, 24);
+            this.checkBoxX1.Name = "checkBoxX1";
+            this.checkBoxX1.Size = new System.Drawing.Size(121, 23);
+            this.checkBoxX1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.checkBoxX1.TabIndex = 1;
+            this.checkBoxX1.Text = "同时导出Excel";
             // 
             // btndownload
             // 
@@ -165,7 +177,6 @@
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.buttonX3);
             this.panel2.Controls.Add(this.buttonX2);
             this.panel2.Controls.Add(this.labelX1);
             this.panel2.Controls.Add(this.labelX2);
@@ -177,18 +188,6 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1126, 69);
             this.panel2.TabIndex = 5;
-            // 
-            // buttonX3
-            // 
-            this.buttonX3.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.buttonX3.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.buttonX3.Location = new System.Drawing.Point(817, 24);
-            this.buttonX3.Name = "buttonX3";
-            this.buttonX3.Size = new System.Drawing.Size(75, 23);
-            this.buttonX3.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.buttonX3.TabIndex = 6;
-            this.buttonX3.Text = "刷新类型";
-            this.buttonX3.Click += new System.EventHandler(this.buttonX3_Click);
             // 
             // buttonX2
             // 
@@ -294,19 +293,6 @@
             this.tabItem1.Name = "tabItem1";
             this.tabItem1.Text = "下载数据";
             // 
-            // checkBoxX1
-            // 
-            // 
-            // 
-            // 
-            this.checkBoxX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.checkBoxX1.Location = new System.Drawing.Point(145, 24);
-            this.checkBoxX1.Name = "checkBoxX1";
-            this.checkBoxX1.Size = new System.Drawing.Size(121, 23);
-            this.checkBoxX1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.checkBoxX1.TabIndex = 1;
-            this.checkBoxX1.Text = "同时导出Excel";
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -347,7 +333,6 @@
         private System.Windows.Forms.Panel panel2;
         private DevComponents.DotNetBar.Controls.DataGridViewX dataGridViewX1;
         private DevComponents.DotNetBar.ButtonX buttonX2;
-        private DevComponents.DotNetBar.ButtonX buttonX3;
         private DevComponents.DotNetBar.Controls.CheckBoxX checkBoxX1;
     }
 }
