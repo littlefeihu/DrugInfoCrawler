@@ -14,6 +14,7 @@ namespace Cnkinet
 {
     public partial class Form1 : Form
     {
+        DataTable standardTable = new DataTable("standardTable");
         public Form1()
         {
             InitializeComponent();
@@ -21,7 +22,11 @@ namespace Cnkinet
             webBrowser1.Navigate("http://kns.cnki.net/kns/brief/default_result.aspx");
 
             InitData();
-
+            standardTable.Columns.Add("篇名");
+            standardTable.Columns.Add("作者");
+            standardTable.Columns.Add("刊名");
+            standardTable.Columns.Add("年期");
+            standardTable.Columns.Add("下载数");
             buttonX2.Enabled = false;
         }
 
@@ -35,7 +40,6 @@ namespace Cnkinet
 
             comboBoxEx1.DataSource = new List<string> { "文献", "期刊", "博硕士", "会议", "报纸", "专利" };
         }
-
         private void btndownload_Click(object sender, EventArgs e)
         {
             var htmlDoc = webBrowser1.Document.Window.Frames["iframeResult"].Document;
@@ -98,12 +102,8 @@ namespace Cnkinet
                     }
                 }
 
-                DataTable standardTable = new DataTable("standardTable");
-                standardTable.Columns.Add("篇名");
-                standardTable.Columns.Add("作者");
-                standardTable.Columns.Add("刊名");
-                standardTable.Columns.Add("年期");
-                standardTable.Columns.Add("下载数");
+
+
                 switch (currentTag)
                 {
                     case "文献":
@@ -181,20 +181,34 @@ namespace Cnkinet
                     default:
                         break;
                 }
-
-
                 var body = DataTableSerializer.SerializeDataTableXml(standardTable);
 
                 var key = string.Join(",", columnList);
-
                 var db1 = new Model1();
-                db1.Cnkis.Add(new Common.Cnki
+                foreach (DataRow item in standardTable.Rows)
                 {
-                    KeyString = key,
-                    DataString = body,
-                    KeyWord = keyword,
-                    Category = currentTag
-                });
+
+                    var title = item["篇名"].ToString();
+                    var author = item["作者"].ToString();
+                    var journalName = item["刊名"].ToString();
+                    var publishDate = item["年期"].ToString();
+                    var downloadCount = item["下载数"].ToString().Trim();
+
+                    if (db1.Cnkis.FirstOrDefault(o => o.Title == title && o.Author == author) == null)
+                    {
+                        db1.Cnkis.Add(new Common.Cnki
+                        {
+                            KeyString = key,
+                            KeyWord = keyword,
+                            Category = currentTag,
+                            Title = title,
+                            Author = author,
+                            JournalName = journalName,
+                            PublishDate = publishDate,
+                            DownloadedCount = string.IsNullOrEmpty(downloadCount) ? 0 : int.Parse(downloadCount)
+                        });
+                    }
+                }
                 db1.SaveChanges();
                 MessageBox.Show("下载完成");
             }
@@ -205,7 +219,7 @@ namespace Cnkinet
         }
 
 
-        Cnki cnki = null;
+        List<Cnki> cnkis = null;
         DataTable dataTable = null;
         private void buttonX1_Click(object sender, EventArgs e)
         {
@@ -218,29 +232,46 @@ namespace Cnkinet
             this.dataGridViewX1.Columns.Clear();
             var db1 = new Model1();
 
-            cnki = db1.Cnkis.Where(o => o.Category == comboBoxEx1.Text && o.KeyWord.Contains(textBoxX1.Text)).FirstOrDefault();
-            if (cnki == null)
+            cnkis = db1.Cnkis.Where(o => o.Category == comboBoxEx1.Text && o.KeyWord.Contains(textBoxX1.Text)).ToList();
+            if (cnkis == null || cnkis.Count == 0)
             {
                 MessageBox.Show("没找到记录");
                 dataGridViewX1.DataSource = new DataTable();
                 return;
             }
-            dataTable = DataTableSerializer.DeserializeDataTable(cnki.DataString);
+
             System.Windows.Forms.DataGridViewCheckBoxColumn Column1;
             Column1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             Column1.HeaderText = "选择";
             Column1.Name = "Select";
 
             this.dataGridViewX1.Columns.Add(Column1);
+            var searchedDataTable = standardTable.Clone();
+            foreach (var dataitem in cnkis.Select(o => new
+            {
+                o.Title,
+                o.Author,
+                o.JournalName,
+                o.PublishDate,
+                o.DownloadedCount
+            }).ToList())
+            {
+                var newrow = searchedDataTable.NewRow();
+                newrow["篇名"] = dataitem.Title;
+                newrow["作者"] = dataitem.Author;
+                newrow["刊名"] = dataitem.JournalName;
+                newrow["年期"] = dataitem.PublishDate;
+                newrow["下载数"] = dataitem.DownloadedCount;
+                searchedDataTable.Rows.Add(newrow);
+            }
 
-            dataGridViewX1.DataSource = dataTable;
-
-            buttonX2.Enabled = dataTable.Rows.Count > 0;
+            dataGridViewX1.DataSource = searchedDataTable;
+            buttonX2.Enabled = searchedDataTable.Rows.Count > 0;
         }
 
         private void buttonX2_Click(object sender, EventArgs e)
         {
-            var selectedDataTable = dataTable.Clone();
+            var selectedDataTable = standardTable.Clone();
             foreach (DataGridViewRow row in dataGridViewX1.SelectedRows)
             {
                 if (row.DataBoundItem == null)
