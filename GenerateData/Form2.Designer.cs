@@ -28,10 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.labelX6 = new DevComponents.DotNetBar.LabelX();
             this.labelX4 = new DevComponents.DotNetBar.LabelX();
             this.buttonX1 = new DevComponents.DotNetBar.ButtonX();
-            this.rangeSlider1 = new DevComponents.DotNetBar.Controls.RangeSlider();
             this.textBoxX1 = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.labelX3 = new DevComponents.DotNetBar.LabelX();
             this.dateTimeInput2 = new DevComponents.Editors.DateTimeAdv.DateTimeInput();
@@ -47,20 +45,12 @@
             this.label1 = new System.Windows.Forms.Label();
             this.labelX8 = new DevComponents.DotNetBar.LabelX();
             this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.labelX6 = new DevComponents.DotNetBar.LabelX();
             ((System.ComponentModel.ISupportInitialize)(this.dateTimeInput2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateTimeInput1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // labelX6
-            // 
-            // 
-            // 
-            // 
-            this.labelX6.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX6.Location = new System.Drawing.Point(83, 69);
-            this.labelX6.Name = "labelX6";
-            this.labelX6.Size = new System.Drawing.Size(59, 23);
-            this.labelX6.TabIndex = 24;
             // 
             // labelX4
             // 
@@ -68,11 +58,11 @@
             // 
             // 
             this.labelX4.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX4.Location = new System.Drawing.Point(29, 67);
+            this.labelX4.Location = new System.Drawing.Point(29, 71);
             this.labelX4.Name = "labelX4";
             this.labelX4.Size = new System.Drawing.Size(75, 23);
             this.labelX4.TabIndex = 22;
-            this.labelX4.Text = "温度范围";
+            this.labelX4.Text = "温度最低值";
             // 
             // buttonX1
             // 
@@ -86,23 +76,6 @@
             this.buttonX1.Text = "确认生成";
             this.buttonX1.Click += new System.EventHandler(this.buttonX1_Click);
             // 
-            // rangeSlider1
-            // 
-            // 
-            // 
-            // 
-            this.rangeSlider1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.rangeSlider1.FocusCuesEnabled = false;
-            this.rangeSlider1.Location = new System.Drawing.Point(148, 67);
-            this.rangeSlider1.Maximum = 100;
-            this.rangeSlider1.Name = "rangeSlider1";
-            this.rangeSlider1.RangeTooltipFormat = "Min: {0} - Max: {1}";
-            this.rangeSlider1.Size = new System.Drawing.Size(140, 24);
-            this.rangeSlider1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.rangeSlider1.TabIndex = 19;
-            this.rangeSlider1.Value = new DevComponents.DotNetBar.RangeValue(3, 6);
-            this.rangeSlider1.ValueChanged += new System.EventHandler(this.rangeSlider1_ValueChanged_1);
-            // 
             // textBoxX1
             // 
             // 
@@ -110,7 +83,7 @@
             // 
             this.textBoxX1.Border.Class = "TextBoxBorder";
             this.textBoxX1.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.textBoxX1.Location = new System.Drawing.Point(129, 185);
+            this.textBoxX1.Location = new System.Drawing.Point(129, 216);
             this.textBoxX1.Name = "textBoxX1";
             this.textBoxX1.PreventEnterBeep = true;
             this.textBoxX1.Size = new System.Drawing.Size(407, 21);
@@ -123,7 +96,7 @@
             // 
             // 
             this.labelX3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX3.Location = new System.Drawing.Point(37, 185);
+            this.labelX3.Location = new System.Drawing.Point(37, 216);
             this.labelX3.Name = "labelX3";
             this.labelX3.Size = new System.Drawing.Size(86, 23);
             this.labelX3.TabIndex = 17;
@@ -252,7 +225,7 @@
             // 
             this.textBoxX2.Border.Class = "TextBoxBorder";
             this.textBoxX2.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.textBoxX2.Location = new System.Drawing.Point(129, 117);
+            this.textBoxX2.Location = new System.Drawing.Point(129, 148);
             this.textBoxX2.Name = "textBoxX2";
             this.textBoxX2.PreventEnterBeep = true;
             this.textBoxX2.Size = new System.Drawing.Size(407, 21);
@@ -265,7 +238,7 @@
             // 
             // 
             this.labelX5.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX5.Location = new System.Drawing.Point(37, 117);
+            this.labelX5.Location = new System.Drawing.Point(37, 148);
             this.labelX5.Name = "labelX5";
             this.labelX5.Size = new System.Drawing.Size(86, 23);
             this.labelX5.TabIndex = 25;
@@ -316,7 +289,7 @@
             // 
             // 
             this.labelX8.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX8.Location = new System.Drawing.Point(37, 241);
+            this.labelX8.Location = new System.Drawing.Point(37, 272);
             this.labelX8.Name = "labelX8";
             this.labelX8.Size = new System.Drawing.Size(67, 23);
             this.labelX8.TabIndex = 31;
@@ -324,17 +297,48 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(129, 241);
+            this.textBox1.Location = new System.Drawing.Point(129, 272);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(100, 21);
             this.textBox1.TabIndex = 32;
             this.textBox1.Text = "1";
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(110, 71);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(100, 21);
+            this.textBox2.TabIndex = 33;
+            this.textBox2.Text = "3.0";
+            // 
+            // textBox3
+            // 
+            this.textBox3.Location = new System.Drawing.Point(110, 100);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(100, 21);
+            this.textBox3.TabIndex = 35;
+            this.textBox3.Text = "6.0";
+            // 
+            // labelX6
+            // 
+            // 
+            // 
+            // 
+            this.labelX6.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX6.Location = new System.Drawing.Point(29, 100);
+            this.labelX6.Name = "labelX6";
+            this.labelX6.Size = new System.Drawing.Size(75, 23);
+            this.labelX6.TabIndex = 34;
+            this.labelX6.Text = "温度最高值";
             // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1112, 495);
+            this.Controls.Add(this.textBox3);
+            this.Controls.Add(this.labelX6);
+            this.Controls.Add(this.textBox2);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.labelX8);
             this.Controls.Add(this.label1);
@@ -343,10 +347,8 @@
             this.Controls.Add(this.txtstarttemperature);
             this.Controls.Add(this.textBoxX2);
             this.Controls.Add(this.labelX5);
-            this.Controls.Add(this.labelX6);
             this.Controls.Add(this.labelX4);
             this.Controls.Add(this.buttonX1);
-            this.Controls.Add(this.rangeSlider1);
             this.Controls.Add(this.textBoxX1);
             this.Controls.Add(this.labelX3);
             this.Controls.Add(this.dateTimeInput2);
@@ -364,10 +366,8 @@
 
         #endregion
 
-        private DevComponents.DotNetBar.LabelX labelX6;
         private DevComponents.DotNetBar.LabelX labelX4;
         private DevComponents.DotNetBar.ButtonX buttonX1;
-        private DevComponents.DotNetBar.Controls.RangeSlider rangeSlider1;
         private DevComponents.DotNetBar.Controls.TextBoxX textBoxX1;
         private DevComponents.DotNetBar.LabelX labelX3;
         private DevComponents.Editors.DateTimeAdv.DateTimeInput dateTimeInput2;
@@ -383,5 +383,8 @@
         private System.Windows.Forms.Label label1;
         private DevComponents.DotNetBar.LabelX labelX8;
         private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox textBox3;
+        private DevComponents.DotNetBar.LabelX labelX6;
     }
 }

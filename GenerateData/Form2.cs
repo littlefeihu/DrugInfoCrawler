@@ -13,10 +13,15 @@ namespace GenerateData
 {
     public partial class Form2 : Form
     {
+
+        decimal lower = 0;
+        decimal high = 0;
         public Form2()
         {
+          
             InitializeComponent();
-            labelX6.Text = "(" + rangeSlider1.Value.Min + "-" + rangeSlider1.Value.Max + ")";
+            lower = decimal.Parse(textBox2.Text);
+            high = decimal.Parse(textBox3.Text);
             dateTimeInput1.Value = DateTime.Now.AddHours(-2);
             dateTimeInput2.Value = DateTime.Now;
 
@@ -34,10 +39,10 @@ namespace GenerateData
             dic.Add(Guid.NewGuid(), list);
             var random = new Random();
             var temperature = decimal.Parse(txtstarttemperature.Text);
-            var min = rangeSlider1.Value.Min;
-            var max = rangeSlider1.Value.Max;
+            var min = lower;
+            var max = high;
             previousTemperature = temperature;
-            bool isUp = temperature <= rangeSlider1.Value.Min;
+            bool isUp = temperature <= lower;
 
             var upDiffs = textBoxX2.Text.Split('|');
 
@@ -63,9 +68,9 @@ namespace GenerateData
                     temperature += decimal.Parse("0.001");
                     if (generated)
                     {
-                        if (temperature >= rangeSlider1.Value.Max)
+                        if (temperature >= high)
                         {
-                            temperature = rangeSlider1.Value.Max;
+                            temperature = high + decimal.Parse(diffvalue);
                         }
                     }
                 }
@@ -77,9 +82,9 @@ namespace GenerateData
                     temperature -= decimal.Parse("0.001");
                     if (generated)
                     {
-                        if (temperature <= rangeSlider1.Value.Min)
+                        if (temperature <= lower)
                         {
-                            temperature = rangeSlider1.Value.Min;
+                            temperature = lower - decimal.Parse(diffvalue);
                         }
                     }
                 }
@@ -115,12 +120,12 @@ namespace GenerateData
 
         private bool IsUp(decimal temperature)
         {
-            return temperature <= rangeSlider1.Value.Min || (previousTemperature <= temperature && temperature < rangeSlider1.Value.Max && temperature > rangeSlider1.Value.Min);
+            return temperature <= lower || (previousTemperature <= temperature && temperature < high && temperature > lower);
         }
 
         private void rangeSlider1_ValueChanged_1(object sender, EventArgs e)
         {
-            labelX6.Invoke(new MethodInvoker(delegate { labelX6.Text = "(" + rangeSlider1.Value.Min + "-" + rangeSlider1.Value.Max + ")"; }));
+            labelX6.Invoke(new MethodInvoker(delegate { labelX6.Text = "(" + lower + "-" + high + ")"; }));
         }
 
         private void button1_Click(object sender, EventArgs e)
