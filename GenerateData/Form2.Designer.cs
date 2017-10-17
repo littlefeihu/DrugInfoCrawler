@@ -45,6 +45,8 @@
             this.labelX7 = new DevComponents.DotNetBar.LabelX();
             this.button1 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.labelX8 = new DevComponents.DotNetBar.LabelX();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dateTimeInput2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateTimeInput1)).BeginInit();
             this.SuspendLayout();
@@ -76,7 +78,7 @@
             // 
             this.buttonX1.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.buttonX1.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.buttonX1.Location = new System.Drawing.Point(861, 72);
+            this.buttonX1.Location = new System.Drawing.Point(188, 304);
             this.buttonX1.Name = "buttonX1";
             this.buttonX1.Size = new System.Drawing.Size(75, 23);
             this.buttonX1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -108,12 +110,12 @@
             // 
             this.textBoxX1.Border.Class = "TextBoxBorder";
             this.textBoxX1.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.textBoxX1.Location = new System.Drawing.Point(701, 24);
+            this.textBoxX1.Location = new System.Drawing.Point(129, 185);
             this.textBoxX1.Name = "textBoxX1";
             this.textBoxX1.PreventEnterBeep = true;
-            this.textBoxX1.Size = new System.Drawing.Size(100, 21);
+            this.textBoxX1.Size = new System.Drawing.Size(407, 21);
             this.textBoxX1.TabIndex = 18;
-            this.textBoxX1.Text = "1";
+            this.textBoxX1.Text = "0|0.1|0.2|0.3|0.4";
             // 
             // labelX3
             // 
@@ -121,7 +123,7 @@
             // 
             // 
             this.labelX3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX3.Location = new System.Drawing.Point(609, 24);
+            this.labelX3.Location = new System.Drawing.Point(37, 185);
             this.labelX3.Name = "labelX3";
             this.labelX3.Size = new System.Drawing.Size(86, 23);
             this.labelX3.TabIndex = 17;
@@ -250,12 +252,12 @@
             // 
             this.textBoxX2.Border.Class = "TextBoxBorder";
             this.textBoxX2.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.textBoxX2.Location = new System.Drawing.Point(469, 69);
+            this.textBoxX2.Location = new System.Drawing.Point(129, 117);
             this.textBoxX2.Name = "textBoxX2";
             this.textBoxX2.PreventEnterBeep = true;
-            this.textBoxX2.Size = new System.Drawing.Size(100, 21);
+            this.textBoxX2.Size = new System.Drawing.Size(407, 21);
             this.textBoxX2.TabIndex = 26;
-            this.textBoxX2.Text = "1";
+            this.textBoxX2.Text = "0|0.1|0.2|0.3|0.4";
             // 
             // labelX5
             // 
@@ -263,7 +265,7 @@
             // 
             // 
             this.labelX5.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX5.Location = new System.Drawing.Point(377, 69);
+            this.labelX5.Location = new System.Drawing.Point(37, 117);
             this.labelX5.Name = "labelX5";
             this.labelX5.Size = new System.Drawing.Size(86, 23);
             this.labelX5.TabIndex = 25;
@@ -271,7 +273,7 @@
             // 
             // txtstarttemperature
             // 
-            this.txtstarttemperature.Location = new System.Drawing.Point(701, 72);
+            this.txtstarttemperature.Location = new System.Drawing.Point(389, 74);
             this.txtstarttemperature.Name = "txtstarttemperature";
             this.txtstarttemperature.Size = new System.Drawing.Size(100, 21);
             this.txtstarttemperature.TabIndex = 27;
@@ -283,7 +285,7 @@
             // 
             // 
             this.labelX7.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX7.Location = new System.Drawing.Point(635, 70);
+            this.labelX7.Location = new System.Drawing.Point(323, 72);
             this.labelX7.Name = "labelX7";
             this.labelX7.Size = new System.Drawing.Size(60, 23);
             this.labelX7.TabIndex = 28;
@@ -291,7 +293,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(861, 143);
+            this.button1.Location = new System.Drawing.Point(188, 375);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 29;
@@ -302,17 +304,39 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(754, 154);
+            this.label1.Location = new System.Drawing.Point(81, 386);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(47, 12);
             this.label1.TabIndex = 30;
             this.label1.Text = "列数：0";
+            // 
+            // labelX8
+            // 
+            // 
+            // 
+            // 
+            this.labelX8.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX8.Location = new System.Drawing.Point(37, 241);
+            this.labelX8.Name = "labelX8";
+            this.labelX8.Size = new System.Drawing.Size(67, 23);
+            this.labelX8.TabIndex = 31;
+            this.labelX8.Text = "间隔(分钟)";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(129, 241);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(100, 21);
+            this.textBox1.TabIndex = 32;
+            this.textBox1.Text = "1";
             // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1112, 495);
+            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.labelX8);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.labelX7);
@@ -357,5 +381,7 @@
         private DevComponents.DotNetBar.LabelX labelX7;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label1;
+        private DevComponents.DotNetBar.LabelX labelX8;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }

@@ -25,6 +25,8 @@ namespace GenerateData
         List<string> dateList = new List<string>();
         bool generated = false;
         decimal previousTemperature = 0;
+        List<string> firstlist = new List<string>();
+
         private void buttonX1_Click(object sender, EventArgs e)
         {
             List<string> list = new List<string>();
@@ -35,10 +37,17 @@ namespace GenerateData
             var min = rangeSlider1.Value.Min;
             var max = rangeSlider1.Value.Max;
             previousTemperature = temperature;
-            bool isUp = temperature < rangeSlider1.Value.Min;
+            bool isUp = temperature <= rangeSlider1.Value.Min;
+
+            var upDiffs = textBoxX2.Text.Split('|');
+
+            var downDiffs = textBoxX1.Text.Split('|');
+
+
 
             list.Add(temperature.ToString("0.0"));
-            for (DateTime i = dateTimeInput1.Value; i < dateTimeInput2.Value; i = i.AddMinutes(1))
+            int index = 0;
+            for (DateTime i = dateTimeInput1.Value; i < dateTimeInput2.Value; i = i.AddMinutes(int.Parse(textBox1.Text)))
             {
                 if (!generated)
                 {
@@ -47,41 +56,66 @@ namespace GenerateData
                 }
                 if (isUp)
                 {
-                    var diff = int.Parse(textBoxX2.Text);
-                    var doublerandom = random.NextDouble();
-                    if (diff < 1)
-                    {
-                        diff = 0;
-                    }
                     ///升高
-                    var diffvalue = random.Next(0, diff) + doublerandom;
+                    var diffvalue = upDiffs[random.Next(0, upDiffs.Length)];
 
                     temperature += Convert.ToDecimal(diffvalue);
+                    temperature += decimal.Parse("0.001");
+                    if (generated)
+                    {
+                        if (temperature >= rangeSlider1.Value.Max)
+                        {
+                            temperature = rangeSlider1.Value.Max;
+                        }
+                    }
                 }
                 else
                 {
-                    var diff = int.Parse(textBoxX1.Text);
-                    var doublerandom = random.NextDouble();
-                    if (diff < 1)
-                    {
-                        diff = 0;
-                    }
                     //下降
-                    var diffvalue = random.Next(0, int.Parse(textBoxX1.Text)) + doublerandom;
+                    var diffvalue = downDiffs[random.Next(0, downDiffs.Length)];
                     temperature -= Convert.ToDecimal(diffvalue);
+                    temperature -= decimal.Parse("0.001");
+                    if (generated)
+                    {
+                        if (temperature <= rangeSlider1.Value.Min)
+                        {
+                            temperature = rangeSlider1.Value.Min;
+                        }
+                    }
                 }
-                isUp = IsUp(temperature);
+
+                if (generated)
+                {
+                    try
+                    {
+                        isUp = decimal.Parse(firstlist[index]) < decimal.Parse(firstlist[index + 1]);
+                    }
+                    catch (Exception)
+                    {
+
+                    }
+                }
+                else
+                {
+                    isUp = IsUp(temperature);
+                }
                 previousTemperature = temperature;
                 list.Add(temperature.ToString("0.0"));
+                index += 1;
             }
 
             label1.Text = "已有列数：" + dic.Count.ToString();
+            if (!generated)
+            {
+                firstlist = list;
+            }
             generated = true;
+
         }
 
         private bool IsUp(decimal temperature)
         {
-            return temperature < rangeSlider1.Value.Min || (previousTemperature < temperature && temperature < rangeSlider1.Value.Max);
+            return temperature <= rangeSlider1.Value.Min || (previousTemperature <= temperature && temperature < rangeSlider1.Value.Max && temperature > rangeSlider1.Value.Min);
         }
 
         private void rangeSlider1_ValueChanged_1(object sender, EventArgs e)

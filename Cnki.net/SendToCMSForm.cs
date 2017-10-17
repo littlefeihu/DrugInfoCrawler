@@ -40,6 +40,8 @@ namespace Cnkinet
                 postdata.Add("typeid", "E70B4F1A-2A99-49A4-BFA3-3D1FF159992A");
                 var datastructures = await HttpHelper.Post<List<DataItem>>(url + "PublishAPI/GetDataStructures", postdata);
 
+
+                datastructures.Add(new DataItem { ID = Guid.Parse("4893AF35-E6FC-4098-99CE-24CE2BE7CA03"), Name = "常见疾病" });
                 Action action1 = () =>
                 {
                     comboBoxEx2.DisplayMember = "Name";

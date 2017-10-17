@@ -104,15 +104,15 @@ namespace NPOIHelperTest
                         headerRow.HeightInPoints = 25;
                         headerRow.CreateCell(0).SetCellValue(strHeaderText);
 
-                        HSSFCellStyle headStyle = (HSSFCellStyle)workbook.CreateCellStyle();
-                        headStyle.Alignment = HorizontalAlignment.Center;
+                        //HSSFCellStyle headStyle = (HSSFCellStyle)workbook.CreateCellStyle();
+                        //headStyle.Alignment = HorizontalAlignment.Center;
 
 
-                        HSSFFont font = (HSSFFont)workbook.CreateFont();
-                        font.FontHeightInPoints = 20;
-                        font.Boldweight = 700;
-                        headStyle.SetFont(font);
-                        headerRow.GetCell(0).CellStyle = headStyle;
+                        //HSSFFont font = (HSSFFont)workbook.CreateFont();
+                        //font.FontHeightInPoints = 20;
+                        //font.Boldweight = 700;
+                        //headStyle.SetFont(font);
+                        //headerRow.GetCell(0).CellStyle = headStyle;
                         //sheet.AddMergedRegion(new Region(0, 0, 0, dtSource.Columns.Count - 1));
 
                     }
@@ -122,8 +122,8 @@ namespace NPOIHelperTest
                     #region 列头及样式
                     {
                         HSSFRow headerRow = (HSSFRow)sheet.CreateRow(0);
-                        HSSFCellStyle headStyle = (HSSFCellStyle)workbook.CreateCellStyle();
-                        headStyle.Alignment = HorizontalAlignment.Center;
+                        //HSSFCellStyle headStyle = (HSSFCellStyle)workbook.CreateCellStyle();
+                        //headStyle.Alignment = HorizontalAlignment.Center;
 
                         //边框
                         //headStyle.BorderBottom = BorderStyle.Thin;
@@ -138,7 +138,7 @@ namespace NPOIHelperTest
                         foreach (DataColumn column in dtSource.Columns)
                         {
                             headerRow.CreateCell(column.Ordinal).SetCellValue(column.ColumnName);
-                            headerRow.GetCell(column.Ordinal).CellStyle = headStyle;
+                            //headerRow.GetCell(column.Ordinal).CellStyle = headStyle;
 
                             //设置列宽
                             sheet.SetColumnWidth(column.Ordinal, (arrColWidth[column.Ordinal] + 1) * 256);
@@ -156,8 +156,8 @@ namespace NPOIHelperTest
 
                 #region 边框,样式
 
-                HSSFCellStyle NewCellStyle = (HSSFCellStyle)workbook.CreateCellStyle();
-                NewCellStyle.Alignment = HorizontalAlignment.Center;
+                //HSSFCellStyle NewCellStyle = (HSSFCellStyle)workbook.CreateCellStyle();
+                //NewCellStyle.Alignment = HorizontalAlignment.Center;
 
                 //边框
                 //NewCellStyle.BorderBottom = BorderStyle.Thin;
@@ -177,7 +177,7 @@ namespace NPOIHelperTest
                     {
                         case "System.String"://字符串类型
                             newCell.SetCellValue(drValue);
-                            newCell.CellStyle = NewCellStyle;
+                            //newCell.CellStyle = NewCellStyle;
                             break;
                         case "System.DateTime"://日期类型
                             System.DateTime dateV;
@@ -190,7 +190,7 @@ namespace NPOIHelperTest
                             bool boolV = false;
                             bool.TryParse(drValue, out boolV);
                             newCell.SetCellValue(boolV);
-                            newCell.CellStyle = NewCellStyle;
+                            //newCell.CellStyle = NewCellStyle;
                             break;
                         case "System.Int16"://整型
                         case "System.Int32":
@@ -199,22 +199,22 @@ namespace NPOIHelperTest
                             int intV = 0;
                             int.TryParse(drValue, out intV);
                             newCell.SetCellValue(intV);
-                            newCell.CellStyle = NewCellStyle;
+                            // newCell.CellStyle = NewCellStyle;
                             break;
                         case "System.Decimal"://浮点型
                         case "System.Double":
                             double doubV = 0;
                             double.TryParse(drValue, out doubV);
                             newCell.SetCellValue(doubV);
-                            newCell.CellStyle = NewCellStyle;
+                            // newCell.CellStyle = NewCellStyle;
                             break;
                         case "System.DBNull"://空值处理
                             newCell.SetCellValue("");
-                            newCell.CellStyle = NewCellStyle;
+                            // newCell.CellStyle = NewCellStyle;
                             break;
                         default:
                             newCell.SetCellValue("");
-                            newCell.CellStyle = NewCellStyle;
+                            // newCell.CellStyle = NewCellStyle;
                             break;
                     }
 
