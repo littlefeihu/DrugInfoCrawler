@@ -125,7 +125,7 @@ namespace Cnkinet
                             newrow["篇名"] = row["篇名"];
                             newrow["作者"] = row["作者"];
                             newrow["刊名"] = row["刊名"];
-                            newrow["年期"] = row["年/期"];
+                            newrow["年期"] = row["发表时间"];
                             newrow["下载数"] = row["下载"];
                             standardTable.Rows.Add(newrow);
                         }

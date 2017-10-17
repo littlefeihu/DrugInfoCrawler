@@ -14,8 +14,8 @@ namespace Cnkinet
     public partial class SendToCMSForm : Form
     {
         string _content;
-        // string url = "http://www.yzd2017.com/";
-        string url = " http://localhost:56362/";
+        string url = "http://www.yzd2017.com/";
+        //string url = " http://localhost:56362/";
 
         public SendToCMSForm(string content)
         {
